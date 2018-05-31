@@ -59,7 +59,6 @@ def send_shirt(urls):
                  'Content-Type': 'application/json'
                  },
         data=json.dumps(data))
-
     task_key = r.json()["result"]["task_key"]
     print(task_key)
     return task_key
