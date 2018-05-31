@@ -3,3 +3,4 @@ bs4
 joblib
 selenium
 flask-bootstrap
+pillow
