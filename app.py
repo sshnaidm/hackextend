@@ -7,14 +7,14 @@ app = Flask(__name__)
 Bootstrap(app)
 
 
-
 @app.route('/', methods=['post', 'get'])
 def index():
     message = 'Please submit your LinkedIn profile here'
     if request.method == 'POST':
         link = request.form.get('linkedin')
         skills_years = get_info(link)
-        return render_template('months.html.j2', skills=skills_years)
+
+        #return render_template('months.html.j2', skills=skills_years)
     elif request.method == 'GET':
         return render_template('form.html.j2', message=message)
     else:

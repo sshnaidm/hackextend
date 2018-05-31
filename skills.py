@@ -84,11 +84,15 @@ def generate():
         d[p] = random.randrange(20, 100)
     return d
 
+def generate_list():
+    t = TECHS[:]
+    random.shuffle(t)
+    return t
 
 def get_info(link):
-    if 'sagish' in link:
-        return sagish
-    elif 'oleg' in link:
-        return oleg_shn
-    return generate()
+    # if 'sagish' in link:
+    #     return sagish.keys()
+    # elif 'oleg' in link:
+    #     return oleg_shn.keys()
+    return generate_list()
     #return parse(skills_of(link.strip("/").split("/")[-1]))
