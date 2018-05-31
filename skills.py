@@ -27,6 +27,21 @@ TECHS = [
     'puppet'
 ]
 
+sagish = {
+    'python': 101,
+    'docker': 29,
+    'ansible': 29,
+    'puppet': 11,
+    'apache':14,
+    'linux': 31,
+}
+
+oleg_shn = {
+    'python': 18,
+    'docker': 18,
+    'android': 75,
+}
+
 def skills_of(username):
 
     with ProfileScraper() as scraper:
@@ -57,3 +72,10 @@ def parse(jobs):
             if t in full.lower():
                 d[t] += int(months)
     return d
+
+def get_info(link):
+    if 'sagish' in link:
+        return sagish
+    elif 'oleg' in link:
+        return oleg_shn
+    return parse(skills_of(link.strip("/").split("/")[-1]))
