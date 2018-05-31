@@ -2,3 +2,4 @@ Flask
 bs4
 joblib
 selenium
+flask-bootstrap
