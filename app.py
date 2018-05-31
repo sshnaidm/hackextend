@@ -15,7 +15,7 @@ def index():
         link = request.form.get('linkedin')
         skills_years = get_info(link)
         result = run(skills_years)
-        return str(result)
+        return render_template('pictures.html.j2', pics=result)
         #return render_template('months.html.j2', skills=skills_years)
     elif request.method == 'GET':
         return render_template('form.html.j2', message=message)
@@ -23,8 +23,13 @@ def index():
         abort(404)
 
 @app.route('/pics/<path:path>')
-def send_js(path):
+def send_pics(path):
     return send_from_directory('static/pics', path)
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static/', path)
+
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)),
