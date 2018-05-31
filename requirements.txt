@@ -1,2 +1,4 @@
 Flask
-linkedin
+bs4
+joblib
+selenium

@@ -1,0 +1,5 @@
+<ul>
+    {% for skill, months in skills.items() %}
+    {% if months !=0 %}<li>{{ skill|capitalize }} - {{ months }} months</li>{% endif %}
+{% endfor %}
+</ul>

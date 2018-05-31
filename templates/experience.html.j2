@@ -1,0 +1,6 @@
+
+<ul>
+    {% for job in jobs %}
+    <li>{{ job.date_range }}<br>{{ job.title }}<br>{{ job.description }}</li>
+    {% endfor %}
+</ul>
