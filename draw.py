@@ -100,7 +100,7 @@ def shirt(techs):
 
 def run(t):
     shirt(t)
-    wait_shirt(send_shirt(generated_urls))
+    return wait_shirt(send_shirt(generated_urls))
 
 if __name__ == "__main__":
     shirt(techs)
