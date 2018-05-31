@@ -44,6 +44,12 @@ div.well{
   height:30px;
   /* background-image:url('http://placehold.it/200x30/000000/ffffff/&text=BRAND+LOGO'); */
 }
+.form-control-inline {
+    min-width: 0;
+    width: auto;
+    display: inline;
+}
+
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -58,17 +64,20 @@ div.well{
 <div class="container">
   <div class="row">
     <div class="Absolute-Center is-Responsive">
-      <div id="logo-container"></div>
       <div class="col-sm-12 col-md-10 col-md-offset-1">
 
  <form class="form" action="/" method="post" role="form">
 
-    <div class="form-group">
+    <div class="form-group form-control-inline">
+
         <h2>LinkedIn profile</h2>
-      <input type="text" class="form-control" id="linkedin" name="linkedin" placeholder="What's your linkedin profile?">
+
+
+      <input type="text" class="form-control input-lg" id="linkedin" name="linkedin" placeholder="What's your linkedin profile?">
+
     </div>
 <button type="submit" class="btn btn-success">Submit</button>
  </form>
-</div></div></div></div></div>
+</div></div></div></div>
 </body>
  </html>
