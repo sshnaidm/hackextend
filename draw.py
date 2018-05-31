@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw
 
 
 PICS = 'static/pics/'
-DMN = 'https://techshirt-sergeysh.c9users.io/pics'
+DMN = 'https://techshirt-sergeysh.c9users.io/pics/'
 
 #logos = ["red", "green", "blue", "orange", "pink", "purple", "yellow", "cyan"]
 #logos = ["android", "angular", "ansible", "docker", "kubernetes", "python", "react", "vue", "puppet", "grafana", "redis", "linux", "prometheus", "apache", "django"]
