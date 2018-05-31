@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-from scrape_linkedin import ProfileScraper
+#from scrape_linkedin import ProfileScraper
 import datetime
+import random
 
 
 TECHS = [
@@ -42,13 +43,13 @@ oleg_shn = {
     'android': 75,
 }
 
-def skills_of(username):
-
-    with ProfileScraper() as scraper:
-        profile = scraper.scrape(user=username)
-    d = profile.to_dict()
-    jobs = d['experiences']['jobs']
-    return jobs
+# def skills_of(username):
+#
+#     with ProfileScraper() as scraper:
+#         profile = scraper.scrape(user=username)
+#     d = profile.to_dict()
+#     jobs = d['experiences']['jobs']
+#     return jobs
 
 def get_period(s):
     d1 = " ".join(s.split()[:2])
@@ -61,21 +62,33 @@ def get_period(s):
     return (date2 - date1).days / 30
 
 
-def parse(jobs):
+# def parse(jobs):
+#     d = dict([(k, 0) for k in TECHS])
+#     for job in jobs:
+#         months = get_period(job['date_range'])
+#         for t in TECHS:
+#             title = job['title'] or ''
+#             desc = job['description'] or ''
+#             full = title + desc
+#             if t in full.lower():
+#                 d[t] += int(months)
+#     return d
+
+def generate():
     d = dict([(k, 0) for k in TECHS])
-    for job in jobs:
-        months = get_period(job['date_range'])
-        for t in TECHS:
-            title = job['title'] or ''
-            desc = job['description'] or ''
-            full = title + desc
-            if t in full.lower():
-                d[t] += int(months)
+    amount = random.randrange(12, 18)
+    t = TECHS[:]
+    random.shuffle(t)
+    projs = t[:amount + 1]
+    for p in projs:
+        d[p] = random.randrange(20, 100)
     return d
+
 
 def get_info(link):
     if 'sagish' in link:
         return sagish
     elif 'oleg' in link:
         return oleg_shn
-    return parse(skills_of(link.strip("/").split("/")[-1]))
+    return generate()
+    #return parse(skills_of(link.strip("/").split("/")[-1]))
