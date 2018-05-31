@@ -3,6 +3,10 @@ import math
 
 options = Options()
 options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--no-first-run')
+options.add_argument('--disable-gpu')
+options.add_argument('--disable-extensions')
 HEADLESS_OPTIONS = {'chrome_options': options}
 
 
