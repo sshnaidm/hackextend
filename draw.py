@@ -48,21 +48,21 @@ generated_urls = {"default" : DMN + "front.png",
         "sleeve_left" : DMN + "left.png",
         "sleeve_right" : DMN + "right.png"}
 
-def send_shirt(urls):
-    with open('tshirt.json') as data_file:
+
+def send_shirt(urls, product, variant):
+    with open('tshirt.json', encoding='utf-8') as data_file:
         data = json.loads(data_file.read())
+    data["variant_ids"] = [variant]
     for fileim in data["files"]:
         fileim["image_url"] = urls[fileim["placement"]]
 
-    r = requests.get('https://api.printful.com/mockup-generator/create-task/257',
-        headers={'authorization': 'Basic dzd0YTd0M24tbXpyeC02YTg0OnFtbWctbjR6MXJzdWR4Ym9y',
-                 'Content-Type': 'application/json'
-                 },
-        data=json.dumps(data))
+    r = requests.get('https://api.printful.com/mockup-generator/create-task/'+product,
+        headers={'authorization': 'Basic dzd0YTd0M24tbXpyeC02YTg0OnFtbWctbjR6MXJzdWR4Ym9y'},
+        json=data)
+
     task_key = r.json()["result"]["task_key"]
     print(task_key)
     return task_key
-
 
 def wait_shirt(task_id):
     status = "no"
@@ -101,7 +101,9 @@ def shirt(techs):
 
 def run(t):
     shirt(t)
-    return wait_shirt(send_shirt(generated_urls))
+    mock_links = wait_shirt(send_shirt(generated_urls, "257", 8853))
+    mock_links += wait_shirt(send_shirt(generated_urls, "260", 8879))
+    return mock_links
 
 if __name__ == "__main__":
     shirt(techs)
