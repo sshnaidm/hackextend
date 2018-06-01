@@ -57,8 +57,9 @@ def send_shirt(urls, product, variant):
         fileim["image_url"] = urls[fileim["placement"]]
 
     r = requests.get('https://api.printful.com/mockup-generator/create-task/'+product,
-        headers={'authorization': 'Basic dzd0YTd0M24tbXpyeC02YTg0OnFtbWctbjR6MXJzdWR4Ym9y'},
-        json=data)
+        headers={'authorization': 'Basic dzd0YTd0M24tbXpyeC02YTg0OnFtbWctbjR6MXJzdWR4Ym9y',
+                 'Content-Type': 'application/json'},
+        data=json.dumps(data))
 
     task_key = r.json()["result"]["task_key"]
     print(task_key)
